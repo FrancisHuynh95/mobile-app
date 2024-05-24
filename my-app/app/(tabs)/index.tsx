@@ -15,46 +15,38 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome! Here are your remaining calories</ThemedText>
+        <ThemedText type="title">Welcome to Calorie Tracker!</ThemedText>
       </ThemedView>
 
       {/*Blocks of text*/}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+          <ThemedText type="defaultSemiBold">Stay on top of your nutrition goals with our easy-to-use app designed to help you track your daily calorie intake effortlessly. Whether you're aiming to lose weight, maintain your current weight, or simply be more mindful of your eating habits, Calorie Tracker has got you covered.</ThemedText> to see changes.
           Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
         </ThemedText>
       </ThemedView>
-
 
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
+        <ThemedText type="subtitle">Features:</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+        <ThemedText type="subtitle">Quick Search: </ThemedText> <ThemedText type='defaultSemiBold'>Easily find generic calorie counts for a wide range of food items with just a few taps.</ThemedText>
+
+        <ThemedText type="subtitle">Manual Entry: </ThemedText>
+        <ThemedText type='defaultSemiBold'>Enter each ingredient and its calorie amount manually for precise tracking of your homemade meals.</ThemedText>
+
+        <ThemedText type="subtitle">Barcode Scanning:</ThemedText>
+        <ThemedText type='defaultSemiBold'>Conveniently scan the barcode of packaged foods to instantly get accurate calorie information from our comprehensive database.</ThemedText>
       </ThemedView>
 
+      <ThemedText type='subtitle'>Start your journey towards healthier eating today with Calorie Tracker, your personal assistant for calorie counting. Download now and take the first step towards a healthier you!</ThemedText>
 
 
       <ThemedView style={styles.titleContainer}>
         <ThemedText type='title'></ThemedText>
       </ThemedView>
-        Calories
+
     </ParallaxScrollView>
   );
 }
