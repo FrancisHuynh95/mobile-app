@@ -42,7 +42,6 @@ export default function HomeScreen() {
 
       <ThemedText type='subtitle'>Start your journey towards healthier eating today with Calorie Tracker, your personal assistant for calorie counting. Download now and take the first step towards a healthier you!</ThemedText>
 
-
       <ThemedView style={styles.titleContainer}>
         <ThemedText type='title'></ThemedText>
       </ThemedView>

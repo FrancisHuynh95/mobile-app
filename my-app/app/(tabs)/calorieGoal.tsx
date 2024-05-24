@@ -4,6 +4,7 @@ import React from 'react';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Collapsible } from '@/components/Collapsible';
 
 export default function CalorieGoal() {
     const [text, useText] = React.useState('0')
@@ -14,18 +15,22 @@ export default function CalorieGoal() {
             <ThemedView style={styles.titleContainer}>
                 <ThemedText type="title">This is where you enter your daily calorie goal</ThemedText>
             </ThemedView>
-            <ThemedView>
-                <TextInput
-                    keyboardType='numeric'
-                    placeholder='Enter your calorie goal'
-                    onChangeText={useText}
-                    value={text}
-                    style={styles.input}
-                />
-            </ThemedView>
-            <ThemedView>
-                <button>Update</button>
-            </ThemedView>
+            <Collapsible
+            title='Change your target calories here'
+            >
+                <ThemedView>
+                    <TextInput
+                        keyboardType='numeric'
+                        placeholder='Enter your calorie goal'
+                        onChangeText={useText}
+                        value={text}
+                        style={styles.input}
+                    />
+                </ThemedView>
+                <ThemedView>
+                    <button>Update</button>
+                </ThemedView>
+            </Collapsible>
         </ParallaxScrollView>
     );
 }
