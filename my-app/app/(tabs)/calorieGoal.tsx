@@ -1,13 +1,29 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, TextInput } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Collapsible } from '@/components/Collapsible';
+import  { api } from '../../constants/important'
 
 export default function CalorieGoal() {
     const [text, useText] = React.useState('0')
+    const [query, setQuery] = React.useState([])
+
+    async function testFunc():Promise<object>{
+        let test = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${api}`)
+        // console.log('test', test)
+        let res = await test.json()
+        return {data: res,
+                status: 200
+        }
+    }
+
+    function onSubmit():void{
+        console.log(`This function will save the calories the user entered to the backend. The entered calories is: ${text}`)
+    }
+
     return (
         <ParallaxScrollView
             headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -20,7 +36,7 @@ export default function CalorieGoal() {
             >
                 <ThemedView>
                     <TextInput
-                        keyboardType='numeric'
+                        inputMode='numeric'
                         placeholder='Enter your calorie goal'
                         onChangeText={useText}
                         value={text}
@@ -28,7 +44,7 @@ export default function CalorieGoal() {
                     />
                 </ThemedView>
                 <ThemedView>
-                    <button>Update</button>
+                    <button onClick={() => onSubmit()}>Update</button>
                 </ThemedView>
             </Collapsible>
         </ParallaxScrollView>
