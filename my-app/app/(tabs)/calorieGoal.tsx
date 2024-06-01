@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, TextInput } from 'react-native';
+import { Alert, StyleSheet, TextInput } from 'react-native';
 import React, { useEffect } from 'react';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -7,19 +7,24 @@ import { ThemedView } from '@/components/ThemedView';
 import { Collapsible } from '@/components/Collapsible';
 import  { api } from '../../constants/important'
 
+
 export default function CalorieGoal() {
     const [text, useText] = React.useState('0')
     const [query, setQuery] = React.useState([])
 
-    async function testFunc():Promise<object>{
-        let test = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${api}`)
-        // console.log('test', test)
-        let res = await test.json()
-        return {data: res,
-                status: 200
-        }
-    }
 
+    React.useEffect(() => {
+        async function testFunc():Promise<void>{
+            let test = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${api}`)
+            if(test.ok){
+                const res = await test.json()
+                setQuery(res)
+            }
+        }
+        testFunc()
+    }, [])
+
+    console.log(query)
     function onSubmit():void{
         console.log(`This function will save the calories the user entered to the backend. The entered calories is: ${text}`)
     }
