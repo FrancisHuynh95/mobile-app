@@ -1,11 +1,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Alert, StyleSheet, TextInput } from 'react-native';
-import React, { useEffect } from 'react';
+import { StyleSheet, TextInput } from 'react-native';
+import React from 'react';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { Collapsible } from '@/components/Collapsible';
-import  { api } from '../../constants/important'
+import { api } from '../../constants/important'
 
 
 export default function CalorieGoal() {
@@ -14,9 +13,9 @@ export default function CalorieGoal() {
 
 
     React.useEffect(() => {
-        async function testFunc():Promise<void>{
+        async function testFunc(): Promise<void> {
             let test = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${api}`)
-            if(test.ok){
+            if (test.ok) {
                 const res = await test.json()
                 setQuery(res)
             }
@@ -24,8 +23,7 @@ export default function CalorieGoal() {
         testFunc()
     }, [])
 
-    console.log(query)
-    function onSubmit():void{
+    function onSubmit(): void {
         console.log(`This function will save the calories the user entered to the backend. The entered calories is: ${text}`)
     }
 
@@ -36,22 +34,24 @@ export default function CalorieGoal() {
             <ThemedView style={styles.titleContainer}>
                 <ThemedText type="title">This is where you enter your daily calorie goal</ThemedText>
             </ThemedView>
-            <Collapsible
-            title='Change your target calories here'
-            >
-                <ThemedView>
-                    <TextInput
-                        inputMode='numeric'
-                        placeholder='Enter your calorie goal'
-                        onChangeText={useText}
-                        value={text}
-                        style={styles.input}
-                    />
-                </ThemedView>
-                <ThemedView>
-                    <button onClick={() => onSubmit()}>Update</button>
-                </ThemedView>
-            </Collapsible>
+            <ThemedView>
+                <ThemedText type='subtitle'>Change your target calories here</ThemedText>
+                <TextInput
+                    inputMode='numeric'
+                    placeholder='Enter your calorie goal'
+                    onChangeText={useText}
+                    value={text}
+                    style={styles.input}
+                />
+            </ThemedView>
+            <ThemedView>
+                <button onClick={() => onSubmit()}>Update</button>
+            </ThemedView>
+
+            <ThemedView>
+                <ThemedText type="subtitle">Add calories Here</ThemedText>
+                <button>Button to open modal</button>
+            </ThemedView>
         </ParallaxScrollView>
     );
 }
