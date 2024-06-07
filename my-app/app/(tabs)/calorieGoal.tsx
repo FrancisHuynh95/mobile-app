@@ -6,7 +6,6 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { api } from '../../constants/important'
 
-
 export default function CalorieGoal() {
     const [text, useText] = React.useState('0')
     const [query, setQuery] = React.useState([])
