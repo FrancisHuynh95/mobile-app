@@ -13,13 +13,21 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "${PRODUCT_NAME} needs access to your Camera to scan barcodes."
+      },
+      "bundleIdentifier": "com.anonymous.my-app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.calorie_tracker"
     },
     "web": {
       "bundler": "metro",
@@ -31,13 +39,20 @@
       [
         "react-native-vision-camera",
         {
-          "cameraPermissionText": "${PRODUCT_NAME} needs access to your Camera."
+          "cameraPermissionText": "${PRODUCT_NAME} needs access to your Camera to scan barcodes."
         }
-
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "93ba0d8f-042f-4266-99b7-224dd5581d02"
+      }
     }
   }
 }
