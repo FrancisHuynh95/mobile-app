@@ -13,23 +13,42 @@ export default function CalorieGoal() {
     // test barcode number 818094005777 === Rockstar energy drink
 
 
-    React.useEffect(() => {
-        async function testFunc(): Promise<void> {
-            let test = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${api}`)
-            if (test.ok) {
-                const res = await test.json()
-                setQuery(res)
-            }
-        }
-        testFunc()
-    }, [])
+    // React.useEffect(() => {
+    //     async function testFunc(): Promise<void> {
+    //         let test = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${api}`)
+    //         if (test.ok) {
+    //             const res = await test.json()
+    //             setQuery(res)
+    //         }
+    //     }
+    //     testFunc()
+    // }, [])
 
     function onSubmit(): void {
         alert(`This function will save the calories the user entered to the backend. The entered calories is: ${text}`)
         console.log(query)
     }
 
+    const testInfo = {
+        1: {
+            name: "Rockstar",
+            calories: "123"
+        },
+        2: {
+            name: "Monster",
+            calories: "456"
+        },
+        3: {
+            name: "Red Bull",
+            calories: "789"
+        },
+        4: {
+            name: "Celsius",
+            calories: "10"
+        },
+    }
 
+    const testArr: string[] = Object.keys(testInfo)
 
     return (
         <ParallaxScrollView
@@ -55,6 +74,11 @@ export default function CalorieGoal() {
             <ThemedView>
                 <ThemedText type="subtitle">Add calories Here</ThemedText>
                 <button>Button to open modal</button>
+            </ThemedView>
+
+            <ThemedView>
+                <ThemedText type='title'>Today's History</ThemedText>
+                {testArr.map(x => <ThemedText type="default">{`${testInfo[x].name} - ${testInfo[x].calories}`}</ThemedText>)}
             </ThemedView>
         </ParallaxScrollView>
     );
