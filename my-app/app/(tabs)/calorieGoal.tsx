@@ -7,7 +7,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { api } from '../../constants/important'
 
 export default function CalorieGoal() {
-    const [text, useText] = React.useState('0')
+    const [text, useText] = React.useState('2800')
     const [query, setQuery] = React.useState([])
 
     // test barcode number 818094005777 === Rockstar energy drink
@@ -29,7 +29,7 @@ export default function CalorieGoal() {
         console.log(query)
     }
 
-    const testInfo = {
+    const testInfo:any = {
         1: {
             name: "Rockstar",
             calories: "123"
@@ -50,6 +50,16 @@ export default function CalorieGoal() {
 
     const testArr: string[] = Object.keys(testInfo)
 
+    let remainingCalories: number = parseInt(testArr.reduce((ar, x) => parseInt(ar) - parseInt(testInfo[x].calories), text))
+
+    const handleDelete = () => {
+        alert("This button will delete the calorie entry")
+    }
+
+    const handleModify = () => {
+        alert("This button will modify the calorie entry")
+    }
+
     return (
         <ParallaxScrollView
             headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -58,6 +68,7 @@ export default function CalorieGoal() {
                 <ThemedText type="title">This is where you enter your daily calorie goal</ThemedText>
             </ThemedView>
             <ThemedView>
+                <ThemedText type='subtitle'>{`Current Calorie Goal: ${text}`}</ThemedText>
                 <ThemedText type='subtitle'>Change your target calories here</ThemedText>
                 <TextInput
                     inputMode='numeric'
@@ -77,8 +88,16 @@ export default function CalorieGoal() {
             </ThemedView>
 
             <ThemedView>
+                <ThemedText type='subtitle'>{`Remaining Calories: ${remainingCalories}`}</ThemedText>
                 <ThemedText type='title'>Today's History</ThemedText>
-                {testArr.map(x => <ThemedText type="default">{`${testInfo[x].name} - ${testInfo[x].calories}`}</ThemedText>)}
+                {testArr.map(x =>
+                    <>
+                        <ThemedText type="default">{`${testInfo[x].name} - ${testInfo[x].calories}`}</ThemedText>
+                        <button onClick={() => handleModify()}>Modify</button>
+                        <button onClick={() => handleDelete()}>Delete</button>
+                    </>
+                )
+                }
             </ThemedView>
         </ParallaxScrollView>
     );
