@@ -10,6 +10,8 @@ export default function CalorieGoal() {
     const [text, useText] = React.useState('0')
     const [query, setQuery] = React.useState([])
 
+    // test barcode number 818094005777 === Rockstar energy drink
+
 
     React.useEffect(() => {
         async function testFunc(): Promise<void> {
@@ -23,8 +25,11 @@ export default function CalorieGoal() {
     }, [])
 
     function onSubmit(): void {
-        console.log(`This function will save the calories the user entered to the backend. The entered calories is: ${text}`)
+        alert(`This function will save the calories the user entered to the backend. The entered calories is: ${text}`)
+        console.log(query)
     }
+
+
 
     return (
         <ParallaxScrollView
