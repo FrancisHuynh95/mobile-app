@@ -1,10 +1,10 @@
-import { useCameraPermission } from "react-native-vision-camera"
+// import { useCameraPermission } from "react-native-vision-camera"
 
 
-export default function Test(){
-    const {hasPermission, requestPermission} = useCameraPermission()
-    
-    return (
-        null
-      )
-}
+// export default function Test(){
+//     const {hasPermission, requestPermission} = useCameraPermission()
+
+//     return (
+//         null
+//       )
+// }
