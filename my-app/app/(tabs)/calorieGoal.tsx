@@ -44,13 +44,12 @@ export default function CalorieGoal() {
         },
         4: {
             name: "Celsius",
-            calories: "10"
+            calories: "102"
         },
     }
 
-    const testArr: string[] = Object.keys(testInfo)
-
-    let remainingCalories: number = parseInt(testArr.reduce((ar, x) => parseInt(ar) - parseInt(testInfo[x].calories), text))
+    const testArr: any = Object.keys(testInfo)
+    let remainingCalories:number = parseInt(testArr.reduce((acc:string, x:string) => parseInt(acc) - parseInt(testInfo[x].calories), text as string))
 
     const handleDelete = () => {
         alert("This button will delete the calorie entry")
