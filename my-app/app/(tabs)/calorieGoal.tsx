@@ -89,7 +89,7 @@ export default function CalorieGoal() {
             <ThemedView>
                 <ThemedText type='subtitle'>{`Remaining Calories: ${remainingCalories}`}</ThemedText>
                 <ThemedText type='title'>Today's History</ThemedText>
-                {testArr.map(x =>
+                {testArr.map((x: any) =>
                     <>
                         <ThemedText type="default">{`${testInfo[x].name} - ${testInfo[x].calories}`}</ThemedText>
                         <button onClick={() => handleModify()}>Modify</button>
