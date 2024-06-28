@@ -10,6 +10,28 @@ import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+//import of auth from firebase
+import { getAuth, signInWithPhoneNumber } from "firebase/auth"
+
+const auth = getAuth()
+
+// const phoneNumber = getPhoneNumberFromUserInput();
+// const appVerifier = window.recaptchaVerifier;
+
+// const auth = getAuth();
+// signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    // .then((confirmationResult) => {
+      // SMS sent. Prompt user to type the code from the message, then sign the
+      // user in with confirmationResult.confirm(code).
+      // window.confirmationResult = confirmationResult;
+      // ...
+    // }).catch((error) => {
+      // Error; SMS not sent
+      // ...
+    // });
+// To apply the default browser preference instead of explicitly setting it.
+auth.languageCode = 'it';
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -24,7 +46,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+console.log(app)
 const analytics = getAnalytics(app);
+console.log(analytics)
 
 export default function HomeScreen() {
   return (
