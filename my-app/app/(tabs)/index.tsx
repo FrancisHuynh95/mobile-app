@@ -1,4 +1,5 @@
 import { Image, StyleSheet, Platform } from 'react-native';
+import { firebaseConfig } from '@/constants/important';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -34,17 +35,9 @@ auth.languageCode = 'it';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyC30S508bd9Btymu-QMTjnj5st8ChPGE1Q",
-  authDomain: "calorieburner-c2663.firebaseapp.com",
-  projectId: "calorieburner-c2663",
-  storageBucket: "calorieburner-c2663.appspot.com",
-  messagingSenderId: "47313775324",
-  appId: "1:47313775324:web:2907cb6001aec78b2ba219",
-  measurementId: "G-S8YVX663RX"
-};
 
 // Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 console.log(app)
 const analytics = getAnalytics(app);
